@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CV Maker</title>
+
+	<style>
+		html, body {
+			text-rendering: optimizeLegibility;
+		}
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		button a {
+			color: white;
+			text-decoration: none;
+		}
+		.display-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 16px;
+		}
+
+		.grid-item {
+			background: #D3D3D3;
+			border-radius: 4px;
+		}
+
+		.grid-item img {
+			display: block;
+			width: 100%;
+			max-width: auto;
+			max-height: 350px;
+			margin-bottom: 5px;
+			object-fit: cover;
+			object-position: top;
+		}
+
+		.grid-content {
+			padding: 20px;
+		}
+
+		.grid-content button {
+			background: black;
+			color: white;
+			padding: 6px 8px;
+			border-radius: 4px;
+			border: none;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		#fullpage {
+			display: none;
+			position: absolute;
+			z-index: 9999;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-size: contain;
+			background-repeat: no-repeat no-repeat;
+			background-position: center center;
+			background-color: black;
+		}
+	</style>
+
+</head>
+<body>
+
+	<h1>Available CVs</h1>
+	<p>Click on any image to view it in full screen. If you like a particular CV, simply click the "Select" button to proceed.</p>
+
+
+	<div class="display-grid">
+		<div class="grid-item">
+			<img src="./graphics/cv-1.jpeg" />
+			<div class="grid-content">
+				<h2>CV for developers</h2>
+				<p>Great for IT developers as it highlights technical skills, tools, frameworks, hands-on projects, and key achievements in solving real-world problems.</p>
+				<button><a href="./cv-1/index.html">Select</a></button>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="fullpage" onclick="this.style.display='none';"></div>
+
+
+<script type="text/javascript">
+const imgs = document.querySelectorAll('.grid-item img');
+const fullPage = document.querySelector('#fullpage');
+
+imgs.forEach(img => {
+	img.addEventListener('click', function() {
+		fullPage.style.backgroundImage = 'url(' + img.src + ')';
+		fullPage.style.display = 'block';
+	});
+});
+</script>
+</body>
+</html>
